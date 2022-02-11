@@ -18,7 +18,7 @@ async function connect(host, port, username, password, database) {
     dialect: 'mariadb'
   });
 
-  models.User = creaUsuarioModel(connection);
+  models.Usuarios = creaUsuarioModel(connection);
   models.Pelicula = creaPeliculaModel(connection);
   models.Personaje = creaPersonajeModel(connection);
   models.Genero = creaGeneroModel(connection);

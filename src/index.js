@@ -1,6 +1,6 @@
 const { config } = require('dotenv');
 const { connect } = require('./database/index');
-const { makeServer } = require('./server');
+const { makeServer } = require('./servidor');
 
 async function main() {
     config();

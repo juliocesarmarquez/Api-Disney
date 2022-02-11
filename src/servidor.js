@@ -5,7 +5,7 @@ const { creaPeliculaRouter } = require('./routers/peliculas');
 const swaggerUi = require('swagger-ui-express');
 const yaml = require('js-yaml');
 const fs = require('fs');
-const { makeRouter: makeUsersRouter } = require('../test/usersTest');
+const { makeRouter: makeUsersRouter } = require('../test/testsUsuarios');
 function loadSwaggerinfo(server) {
     try {
         const doc = yaml.load(fs.readFileSync('./src/specs.yml', 'utf8'));
@@ -21,7 +21,7 @@ function makeServer() {
     server.use('/api', creaPeliculaRouter());
     server.use('/api', creaPersonajeRouter());
     server.use('/api', creaUsuarioRouter());
-    server.use('/api/userstest', makeUsersRouter());
+    server.use('/api/usuariostest', makeUsersRouter());
     loadSwaggerinfo(server);
     return server;
 }

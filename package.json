@@ -7,16 +7,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/juliocesarmarquez/apiAlkemy4.git"
+    "url": "git+https://github.com/juliocesarmarquez/Api-Disney.git"
   },
   "keywords": [],
   "author": "Julio Cesar Marquez",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/juliocesarmarquez/dsny_Alk/issues"
+    "url": "https://github.com/juliocesarmarquez/Api-Disney/issues"
   },
-  "homepage": "https://github.com/juliocesarmarquez/dsny_Alk#readme",
+  "homepage": "https://github.com/juliocesarmarquez/Api-Disney#readme",
   "dependencies": {
+    "chai": "^4.3.6",
     "crypto": "^1.0.1",
     "dotenv": "^15.0.0",
     "express": "^4.17.2",
@@ -26,7 +27,10 @@
     "node": "^17.4.0",
     "nodemon": "^2.0.15",
     "sequelize": "^6.15.0",
+    "supertest": "^6.2.2",
     "swagger-ui-express": "^4.3.0"
   },
-  "description": ""
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {}
 }
