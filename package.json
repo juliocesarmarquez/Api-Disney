@@ -1,0 +1,32 @@
+{
+  "name": "dsny",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "mocha",
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juliocesarmarquez/apiAlkemy4.git"
+  },
+  "keywords": [],
+  "author": "Julio Cesar Marquez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juliocesarmarquez/dsny_Alk/issues"
+  },
+  "homepage": "https://github.com/juliocesarmarquez/dsny_Alk#readme",
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "dotenv": "^15.0.0",
+    "express": "^4.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "mariadb": "^2.5.5",
+    "mocha": "^9.2.0",
+    "node": "^17.4.0",
+    "nodemon": "^2.0.15",
+    "sequelize": "^6.15.0",
+    "swagger-ui-express": "^4.3.0"
+  },
+  "description": ""
+}
