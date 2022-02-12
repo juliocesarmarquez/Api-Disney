@@ -15,45 +15,45 @@ servers:
 paths:
   /auth/register:
     post:
-      summary: Creates a user.
+      summary: Crea un usuario.
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/newuser'
+              $ref: '#/components/schemas/nuevousuario'
       responses: 
-        '201':
-          description: Now you can log in.
-        '403':
-          description: Use another email account 
+        '200':
+          description: Registro exitoso.
+        '500':
+          description: Debe utilizar otra cuenta de email 
       tags:
-        - newuser
+        - nuevousuario
   /auth/login:
     post:
-      summary: Initiates user's session
+      summary: Inicio de sesión usuarios
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/User'          
+              $ref: '#/components/schemas/Usuarios'          
       responses:
         '200':
           description: Token
         '401':
-          description: Wrong information
+          description: Error
       tags:
-        - user
+        - Usuarios
   /characters:
     get:
       security:
         - bearerAuth: []
-      description: Shows all the characters
-      summary: Shows characters.
+      description: Visualizar todos los personajes
+      summary: Listado de personajes.
       responses:
         '200':
-          description: array of characters
+          description: personajes
           content:
             application/json:
               schema: 
@@ -61,102 +61,102 @@ paths:
                 items: 
                   type: string
       tags:
-        - user
+        - Usuarios
     post:
       security:
         - bearerAuth: []
-      description: It allows the admin to add more characters
-      summary: add more characters
+      description: Permite agregar personajes
+      summary: agregar personajes
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/addCharacters'
+              $ref: '#/components/schemas/agregaPersonajes'
       responses:
         '200':
-          description: Characters
+          description: personajes
         '401':
-          description: Could not save the character.
+          description: no se guardaron los cambios.
       tags:
-        - user
+        - Usuarios
   /characters/{id}:
     get:
       security:
         - bearerAuth: []
-      description: It allows the admin to see each character
-      summary: Shows a character
+      description: permite visualizar cada personaje
+      summary: muestra un personaje
       parameters:
         - in: path
           name: id
           required: true
           schema:
             type: integer
-            description: character's id
+            description: personaje id
       responses:
         '200':
-          description: character
+          description: personaje
         '401':
-          description: character with id  does not exist.
+          description: el personaje no existe en la base de datos.
       tags:
-        - user
+        - Usuarios
     put:
       security:
         - bearerAuth: []
-      description: It allows the user to modify each character
-      summary: edit character
+      description: Permite modificar los personajes
+      summary: modificar los personajes
       parameters: 
         - in: path
           name: id
           required: true
           schema:
             type: integer
-            description: character's id
+            description: personaje id
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/editCharacters'
+              $ref: '#/components/schemas/editarPersonajes'
       responses:
         '200':
-          description: character updated.
+          description: personaje actualizado.
         '403':
-          description: You are not logged in.
+          description: Debe iniciar sesión.
         '404':
-          description: character with id  does not exist.  
+          description: personaje no existe en la base de datos.  
       tags:
-        - user
+        - Usuarios
     delete:
       security:
         - bearerAuth: []
-      description: It allows the user to delete a character
-      summary: deletes a character
+      description: Permite eliminar un personaje
+      summary: elimina personaje
       parameters: 
         - in: path
           name: id
           required: true
           schema:
             type: integer
-            description: character's id
+            description: personaje id
       responses:
         '200':
-          description: character deleted
+          description: personaje eliminado
         '403':
-          description: You are not logged in.
+          description: Debe iniciar sesión.
         '404':
-          description: character with id does not exist. 
+          description: personaje no existe en la base de datos. 
       tags:
-        - user
+        - Usuarios
   /movies:
     get:
       security:
         - bearerAuth: []
-      description: Shows all the movies
-      summary: Shows movies.
+      description: Listado de todas las peliculas
+      summary: Peliculas.
       responses:
         '200':
-          description: array of movies
+          description: peliculas
           content:
             application/json:
               schema: 
@@ -164,115 +164,115 @@ paths:
                 items: 
                   type: string
       tags:
-        - user
+        - Usuarios
     post:
       security:
         - bearerAuth: []
-      description: It allows the user to add more movies
-      summary: add more movies
+      description: Permite agregar peliculas
+      summary: permite agregar peliculas
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/addMovies'
+              $ref: '#/components/schemas/agregarPeliculas'
       responses:
         '200':
-          description: movies
+          description: peliculas
         '401':
-          description: Could not save the movies.
+          description: No se pudo guardar los cambios.
       tags:
-        - user
+        - Usuarios
   /movies/{id}:
     get:
       security:
         - bearerAuth: []
-      description: It allows the user to see each movies
-      summary: Shows a movies
+      description: Permite visualizar cada pelicula.
+      summary: Pelicula
       parameters:
         - in: path
           name: id
           required: true
           schema:
             type: integer
-            description: movie's id
+            description: pelicula id
       responses:
         '200':
-          description: movies
+          description: pelicula
         '401':
-          description: movies with id  does not exist.
+          description: la pelicula no existe en la base de datos.
       tags:
-        - user
+        - Usuarios
     put:
       security:
         - bearerAuth: []
-      description: It allows the user to modify each movies
-      summary: edit movies
+      description: Permite modificar las peliculas
+      summary: modificar peliculas
       parameters: 
         - in: path
           name: id
           required: true
           schema:
             type: integer
-            description: movies's id
+            description: pelicula id
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/editMovies'
+              $ref: '#/components/schemas/editaPeliculas'
       responses:
         '200':
-          description: movies updated.
+          description: pelicula actualizada.
         '403':
-          description: You are not logged in.
+          description: Debe iniciar sesión.
         '404':
-          description: movies with id  does not exist.  
+          description: La pelicula no existe en la base de datos.  
       tags:
-        - user
+        - Usuarios
     delete:
       security:
         - bearerAuth: []
-      description: It allows the user to delete a movies
-      summary: deletes a movies
+      description: Permite eliminar peliculas
+      summary: elimina peliculas
       parameters: 
         - in: path
           name: id
           required: true
           schema:
             type: integer
-            description: movies's id
+            description: pelicula id
       responses:
         '200':
-          description: movies deleted
+          description: pelicula eliminada
         '403':
-          description: You are not logged in.
+          description: Debe iniciar sesión.
         '404':
-          description: movies with id does not exist. 
+          description: La pelicula no existe en la base de datos. 
       tags:
-        - user
+        - Usuarios
 components:
   securitySchemes:
-    bearerAuth:            # arbitrary name for the security scheme
+    bearerAuth:            
       type: http
       scheme: bearer
       bearerFormat: JWT
   schemas:
-    newuser:
+    nuevousuario:
       properties:
-        username: 
+        nombreUsuario: 
           type: string
         email: 
           type: email
         password: 
           type: string   
-    User:
+    Usuarios:
       properties:
         email:
           type: string
         password:
           type: string
-    addCharacters:
+    agregaPersonajes:
       properties:
         nombre:
           type: string
@@ -284,14 +284,14 @@ components:
           type: integer
         historia:
           type: string
-    editCharacters:
+    editarPersonajes:
       parameters: 
         - in: path
           name: id
           required: true
           schema:
             type: integer
-            description: Character's id
+            description: personaje id
       properties:
         nombre:
           type: string
@@ -303,7 +303,7 @@ components:
           type: integer
         historia:
           type: string
-    addMovies:
+    agregarPeliculas:
       properties:
         titulo:
           type: string
@@ -313,14 +313,14 @@ components:
           type: string
         calificacion:
           type: integer
-    editMovies:
+    editaPeliculas:
       parameters: 
         - in: path
           name: id
           required: true
           schema:
             type: integer
-            description: movie's id
+            description: pelicula id
       properties:
         titulo:
           type: string

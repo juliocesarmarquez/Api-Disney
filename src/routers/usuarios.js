@@ -20,7 +20,7 @@ function creaUsuarioRouter(params) {
             });
             if (mail === null) {
                 await data.save()
-                res.status(200).send('Esta preparado para ingresar');
+                res.status(200).send('Registro exitoso.');
             } else {
                 throw res.status(500).send('Debe usar otra cuenta de email.');
             }

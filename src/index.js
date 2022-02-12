@@ -13,14 +13,14 @@ async function main() {
          DB_HOST
      } = process.env;
      const isDBok = await connect(DB_HOST, DB_PORT, DB_USERNAME, DB_PASSWORD, DB_NAME);
-    //initialize();
+    
     const server = makeServer();
     if (isDBok) {
         server.listen(PORT, () => {
-            console.log('Server is running...');
+            console.log('Servidor corriendo..');
         });
     } else {
-        console.log('failed to load DB')
+        console.log('falló al cargar DB')
     }
 }
 

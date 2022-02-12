@@ -1,12 +1,12 @@
 const { Router } = require('express');
 const db = require('../src/database');
-const usuarios = [{
-  email: "prueba1@gmail.com",
-  password: "prueba1",
+const users = [{
+  email: "person2@gmail.com",
+  password: "person1PASSWORD",
 
 }, {
-  email: "prueba2@gmail.com",
-  password: "prueba2",
+  email: "person1@gmail.com",
+  password: "person2PASSWORD",
 
 }];
 function makeRouter() {
@@ -20,21 +20,23 @@ function makeRouter() {
         email: req.body.email,
         password: req.body.password,
       };
-      for (let usuario of usuarios) {
+      for (let usuario of users) {
         if (data.email !== usuario.email) {
-          await usuarios.push(data);
-          res.status(201).json('Listo para acceder.');
+          await users.push(data);
+          res.status(201).json('Now you can log in.');
           return
         } else {
-          res.status(417).send('El email ya se encuentra registrado');
+          res.status(417).send('email is already in use');
         }
       }
     } catch (error) {
-      res.status(417).send('Debe completar todos los campos.' + msj);
+      res.status(417).send('You need to complete all the information.' + msj);
     }
   });
 
   return router;
 }
 
-module.exports = {   makeRouter, usuarios };
+module.exports = {
+  makeRouter, users,
+};
